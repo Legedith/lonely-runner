@@ -1,0 +1,54 @@
+{% extends "layout.html" %}
+
+{% block body %}
+    <h1>PDFs</h1>
+    <ul>
+        {% for i in pdf %}
+            <a href="{{i['Link']}}">       
+                <li>{{ i["Title"] }} </li>
+            </a>
+        {% endfor %}
+    </ul>
+    <h1>PPTs</h1>
+    <ul>
+        {% for i in ppt %}
+            <a href="{{i['Link']}}">       
+                <li>{{ i["Title"] }} </li>
+            </a>
+        {% endfor %}
+    </ul>
+    <h1>Docx</h1>
+    <ul>
+        {% for i in docx %}
+            <a href="{{i['Link']}}">       
+                <li>{{ i["Title"] }} </li>
+            </a>
+        {% endfor %}
+    </ul>
+    <h1>Books</h1>
+    <ul>
+        {% for i in books %}
+            <a href="{{i['Link']}}">       
+                <li>{{ i["Title"] }} </li>
+            </a>
+        {% endfor %}
+    </ul>
+    <h1>Courses & Tutorial</h1>
+    <h4>From MIT</h4>
+    <ul>
+        {% for i in mit %}
+            <a href="{{i['Link']}}">       
+                <li>{{ i["Title"] }} </li>
+            </a>
+        {% endfor %}
+    </ul>
+    <h4>From Medium</h4>
+    <ul>
+        {% for i in medium %}
+            <a href="{{i['Link']}}">       
+                <li>{{ i["Title"] }} </li>
+            </a>
+        {% endfor %}
+    </ul>
+    
+{% endblock %}

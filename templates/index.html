@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+
+{% block body %}
+    <h1 class="ml-2">Enter Topic, Domain and Language</h1>
+    <h5 class="ml-2">TO search over all domains, leave the domain tab empty</h5>
+    <form action="/result" method="post">
+        <div class="form-row w-75">
+            <div class="col-3 ml-5 pr-1 mb-3">
+                <input name="topic" type="text" id="validationDefault01" placeholder="Topic" autofocus required>
+            </div>
+            <div class="col-3 pl-1 pr-1  mb-3">
+                <input name="domain" placeholder="Domain" type="text">
+            </div>
+        </div>
+                <input class="btn btn-primary ml-3 mu-3" type="submit" value="Find">
+    </form>
+{% endblock %}
