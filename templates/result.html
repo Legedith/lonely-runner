@@ -1,54 +1,46 @@
 {% extends "layout.html" %}
 
 {% block body %}
-    <h1>PDFs</h1>
+    <h1>Text Material</h1>
     <ul>
-        {% for i in pdf %}
-            <a href="{{i['Link']}}">       
-                <li>{{ i["Title"] }} </li>
+        {% for i in texts %}
+            <a href="http://archive.org/details/{{i['identifier']}}">       
+                <li>{{ i["title"] }} </li>
             </a>
         {% endfor %}
     </ul>
-    <h1>PPTs</h1>
+    <h1>Websites</h1>
     <ul>
-        {% for i in ppt %}
-            <a href="{{i['Link']}}">       
-                <li>{{ i["Title"] }} </li>
+        {% for i in web %}
+            <a href="http://archive.org/details/{{i['identifier']}}">       
+                <li>{{ i["title"] }} </li>
             </a>
         {% endfor %}
     </ul>
-    <h1>Docx</h1>
+    <h1>Videos</h1>
     <ul>
-        {% for i in docx %}
-            <a href="{{i['Link']}}">       
-                <li>{{ i["Title"] }} </li>
+        {% for i in movies %}
+            <a href="http://archive.org/details/{{i['identifier']}}">       
+                <li>{{ i["title"] }} </li>
             </a>
         {% endfor %}
     </ul>
-    <h1>Books</h1>
+    <h1>Images</h1>
     <ul>
-        {% for i in books %}
-            <a href="{{i['Link']}}">       
-                <li>{{ i["Title"] }} </li>
+        {% for i in image %}
+            <a href="http://archive.org/details/{{i['identifier']}}">       
+                <li>{{ i["title"] }} </li>
             </a>
         {% endfor %}
     </ul>
-    <h1>Courses & Tutorial</h1>
-    <h4>From MIT</h4>
+    <h4>Audio</h4>
     <ul>
-        {% for i in mit %}
-            <a href="{{i['Link']}}">       
-                <li>{{ i["Title"] }} </li>
+        {% for i in audio %}
+            <a href="http://archive.org/details/{{i['identifier']}}">       
+                <li>{{ i["title"] }} </li>
             </a>
         {% endfor %}
     </ul>
-    <h4>From Medium</h4>
-    <ul>
-        {% for i in medium %}
-            <a href="{{i['Link']}}">       
-                <li>{{ i["Title"] }} </li>
-            </a>
-        {% endfor %}
-    </ul>
+    
     
 {% endblock %}

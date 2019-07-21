@@ -9,19 +9,18 @@ import json
 import csv
 
 class mat():
-    def __init__(self, s,t):
+    def __init__(self, s):
         self.subject = s
-        self.type = t
         
-    def main(self):
-        outfile = open('data_'+self.subject+' '+self.type+'.json', 'w')
+    def main(self, t):
+        outfile = open('data_'+self.subject+' '+t+'.json', 'w')
         f = ['description','downloads','identifier','mediatype','publicdate','title']
         results=[]
-        with open('data_'+self.subject+' '+self.type+'.csv', 'w', newline='',encoding="utf-8") as csvfile:
+        with open('data_'+self.subject+' '+t+'.csv', 'w', newline='',encoding="utf-8") as csvfile:
             writer = csv.DictWriter(csvfile,fieldnames = f)
             writer.writeheader()
             count = 0
-            for i in search_items(self.subject+' AND mediatype:'+self.type,fields=f):
+            for i in search_items(self.subject+' AND mediatype:'+t, fields=f):
                 results.append(i)
                 writer.writerow(i)
                 count+=1
@@ -32,5 +31,5 @@ class mat():
         json.dump(results,outfile) 
         
             
-a = mat('linear','texts')
-a.main()
+#a = mat('linear')
+#a.main('texts')
