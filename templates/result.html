@@ -4,7 +4,7 @@
     <h1>Text Material</h1>
     <ul>
         {% for i in texts %}
-            <a href="http://archive.org/details/{{i['identifier']}}">       
+            <a href="{{i['identifier']}}?id={{i}}">       
                 <li>{{ i["title"] }} </li>
             </a>
         {% endfor %}
