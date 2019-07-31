@@ -3,41 +3,46 @@
 {% block body %}
     <h1>Text Material</h1>
     <ul>
+    <h3>Title &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Views</h3>
         {% for i in texts %}
-            <a href="http://archive.org/details/{{i['identifier']}}">       
-                <li>{{ i["title"] }} </li>
+            <a href="display?id={{i['identifier']}}&type=texts&subject={{subject}}">       
+                <li>{{ i["title"][:30]}}...   &nbsp;&nbsp;&nbsp;&nbsp; : &nbsp;&nbsp;&nbsp;&nbsp;   {{i["downloads"]}}</li>
             </a>
         {% endfor %}
     </ul>
     <h1>Websites</h1>
     <ul>
+    <h3>Title &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Views</h3>
         {% for i in web %}
-            <a href="http://archive.org/details/{{i['identifier']}}">       
-                <li>{{ i["title"] }} </li>
+            <a href="display?id={{i['identifier']}}&type=web&subject={{subject}}">       
+                <li>{{ i["title"][:30]}}...   &nbsp;&nbsp;&nbsp;&nbsp; : &nbsp;&nbsp;&nbsp;&nbsp;   {{i["downloads"]}} </li>
             </a>
         {% endfor %}
     </ul>
     <h1>Videos</h1>
     <ul>
+    <h3>Title &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Views</h3>
         {% for i in movies %}
-            <a href="http://archive.org/details/{{i['identifier']}}">       
-                <li>{{ i["title"] }} </li>
+            <a href="display?id={{i['identifier']}}&type=movies&subject={{subject}}">       
+                <li>{{ i["title"][:30]}}...   &nbsp;&nbsp;&nbsp;&nbsp; : &nbsp;&nbsp;&nbsp;&nbsp;   {{i["downloads"]}} </li>
             </a>
         {% endfor %}
     </ul>
     <h1>Images</h1>
     <ul>
+    <h3>Title &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Views</h3>
         {% for i in image %}
-            <a href="http://archive.org/details/{{i['identifier']}}">       
-                <li>{{ i["title"] }} </li>
+            <a href="display?id={{i['identifier']}}&type=image&subject={{subject}}">       
+                <li>{{ i["title"][:30]}}...   &nbsp;&nbsp;&nbsp;&nbsp; : &nbsp;&nbsp;&nbsp;&nbsp;   {{i["downloads"]}} </li>
             </a>
         {% endfor %}
     </ul>
     <h4>Audio</h4>
     <ul>
+    <h3>Title &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Views</h3>
         {% for i in audio %}
-            <a href="http://archive.org/details/{{i['identifier']}}">       
-                <li>{{ i["title"] }} </li>
+            <a href="display?id={{i['identifier']}}&type=audio&subject={{subject}}">       
+                <li>{{ i["title"][:30]}}...   &nbsp;&nbsp;&nbsp;&nbsp; : &nbsp;&nbsp;&nbsp;&nbsp;   {{i["downloads"]}} </li>
             </a>
         {% endfor %}
     </ul>
