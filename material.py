@@ -7,6 +7,9 @@ Created on Thu Apr 11 18:55:42 2019
 from internetarchive import search_items
 import json
 import csv
+import sqlite3
+import pandas as pd
+from pandas import DataFrame
 
 class mat():
     def __init__(self, s):
@@ -27,7 +30,11 @@ class mat():
                 print('.',end='')
                 if count ==30:
                     break
-        print(len(results))
+#        print(len(results))
+        conn = sqlite3.connect('data_'+self.subject+' '+t+'.db')  
+        c = conn.cursor()
+        read = pd.read_csv(r'data_'+self.subject+' '+t+'.csv')
+        read.to_sql('data', conn, if_exists='append', index = False)
         json.dump(results,outfile) 
         
             

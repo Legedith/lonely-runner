@@ -5,6 +5,12 @@ from os import path
 import material
 app = Flask(__name__)
 
+# For database
+import sqlite3
+import pandas as pd
+from pandas import DataFrame
+
+#subject = ''
 
 @app.route("/")
 def index():
@@ -13,6 +19,7 @@ def index():
 
 @app.route("/result", methods=["POST"])
 def result():
+    global subject
     subject = request.form.get("topic")
 #    subject = removeSpaces(subject)
     domain = request.form.get("domain")
@@ -21,15 +28,28 @@ def result():
         subject+= ' ' + domain
     final = Textual(subject)
 #    mit = course_mit(subject)
-    return render_template("result.html", texts=final[0],web=final[1],movies=final[2],image=final[3],audio = final[4])#, medium=medium)
+    return render_template("result.html", texts=final[0],web=final[1],movies=final[2],image=final[3],audio = final[4],subject=subject)#, medium=medium)
 
 #def removeSpaces(s):
 #    s.replace(" ","+")
 #    return s
 
-@app.route("/display", methods=["POST"])
+@app.route("/display", methods=["GET"])
 def display():
-    return render_template("display.html")
+    info = request.args.get('id')
+    t = request.args.get('type')
+    subject = request.args.get('subject')
+    conn = sqlite3.connect('data_'+subject+' '+t+'.db')  
+    c = conn.cursor()
+#    read = pd.read_csv(r'data_'+subject+' '+t+'.csv')
+#    read.to_sql('data', conn, if_exists='append', index = False)
+#    c.execute('SELECT * FROM data')
+    c.execute("UPDATE data SET downloads=downloads+1 WHERE identifier='"+ info+"'")
+    conn.commit()
+    c.execute("SELECT * FROM data WHERE identifier='"+info+"'")
+    a = c.fetchall()
+#   names = [description[0] for description in c.description]
+    return render_template("display.html", info = a[0])
 
 
 def Textual(subject):
