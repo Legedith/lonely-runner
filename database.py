@@ -11,15 +11,15 @@ from pandas import DataFrame
 
 conn = sqlite3.connect('TestDB.db')  
 c = conn.cursor()
-read_clients = pd.read_csv(r'data_Calculus .csv')
+read_clients = pd.read_csv(r'data_Calculus web.csv')
 read_clients.to_sql('data', conn, if_exists='append', index = False)
 c.execute('SELECT * FROM data')
-names = [description[0] for description in c.description]
-info = '''wiki-calculuswithmrjames.wikispaces.com'''
-
-
-c.execute("UPDATE data SET downloads=downloads+1 WHERE identifier='wiki-calculuswithmrjames.wikispaces.com'")
-c.execute("SELECT * FROM data WHERE identifier='"+info+"'")
+#names = [description[0] for description in c.description]
+#info = '''wiki-calculuswithmrjames.wikispaces.com'''
+#
+#
+#c.execute("UPDATE data SET downloads=downloads+1 WHERE identifier='wiki-calculuswithmrjames.wikispaces.com'")
+#c.execute("SELECT * FROM data WHERE identifier='"+info+"'")
 a = c.fetchall()
 print(a)
 #c.fetchall()

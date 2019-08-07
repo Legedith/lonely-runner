@@ -5,8 +5,8 @@
     <ul>
     <h3>Title &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Views</h3>
         {% for i in texts %}
-            <a href="display?id={{i['identifier']}}&type=texts&subject={{subject}}">       
-                <li>{{ i["title"][:30]}}...   &nbsp;&nbsp;&nbsp;&nbsp; : &nbsp;&nbsp;&nbsp;&nbsp;   {{i["downloads"]}}</li>
+            <a href="display?id={{i[2]}}&type=texts&subject={{subject}}">       
+                <li>{{ i[5][:30]}}...   &nbsp;&nbsp;&nbsp;&nbsp; : &nbsp;&nbsp;&nbsp;&nbsp;   {{i[1]}}</li>
             </a>
         {% endfor %}
     </ul>
@@ -14,8 +14,8 @@
     <ul>
     <h3>Title &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Views</h3>
         {% for i in web %}
-            <a href="display?id={{i['identifier']}}&type=web&subject={{subject}}">       
-                <li>{{ i["title"][:30]}}...   &nbsp;&nbsp;&nbsp;&nbsp; : &nbsp;&nbsp;&nbsp;&nbsp;   {{i["downloads"]}} </li>
+            <a href="display?id={{i[2]}}&type=web&subject={{subject}}">       
+                <li>{{ i[5][:30]}}...   &nbsp;&nbsp;&nbsp;&nbsp; : &nbsp;&nbsp;&nbsp;&nbsp;   {{i[1]}} </li>
             </a>
         {% endfor %}
     </ul>
@@ -23,8 +23,8 @@
     <ul>
     <h3>Title &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Views</h3>
         {% for i in movies %}
-            <a href="display?id={{i['identifier']}}&type=movies&subject={{subject}}">       
-                <li>{{ i["title"][:30]}}...   &nbsp;&nbsp;&nbsp;&nbsp; : &nbsp;&nbsp;&nbsp;&nbsp;   {{i["downloads"]}} </li>
+            <a href="display?id={{i[2]}}&type=movies&subject={{subject}}">       
+                <li>{{ i[5][:30]}}...   &nbsp;&nbsp;&nbsp;&nbsp; : &nbsp;&nbsp;&nbsp;&nbsp;   {{i[1]}} </li>
             </a>
         {% endfor %}
     </ul>
@@ -32,8 +32,8 @@
     <ul>
     <h3>Title &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Views</h3>
         {% for i in image %}
-            <a href="display?id={{i['identifier']}}&type=image&subject={{subject}}">       
-                <li>{{ i["title"][:30]}}...   &nbsp;&nbsp;&nbsp;&nbsp; : &nbsp;&nbsp;&nbsp;&nbsp;   {{i["downloads"]}} </li>
+            <a href="display?id={{i[2]}}&type=image&subject={{subject}}">       
+                <li>{{ i[5][:30]}}...   &nbsp;&nbsp;&nbsp;&nbsp; : &nbsp;&nbsp;&nbsp;&nbsp;   {{i[1]}} </li>
             </a>
         {% endfor %}
     </ul>
@@ -41,8 +41,8 @@
     <ul>
     <h3>Title &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Views</h3>
         {% for i in audio %}
-            <a href="display?id={{i['identifier']}}&type=audio&subject={{subject}}">       
-                <li>{{ i["title"][:30]}}...   &nbsp;&nbsp;&nbsp;&nbsp; : &nbsp;&nbsp;&nbsp;&nbsp;   {{i["downloads"]}} </li>
+            <a href="display?id={{i[2]}}&type=audio&subject={{subject}}">       
+                <li>{{ i[5][:30]}}...   &nbsp;&nbsp;&nbsp;&nbsp; : &nbsp;&nbsp;&nbsp;&nbsp;   {{i[1]}} </li>
             </a>
         {% endfor %}
     </ul>

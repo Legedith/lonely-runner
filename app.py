@@ -63,9 +63,10 @@ def Textual(subject):
             print("Bug in Documents")
     final=[]
     for i in docType:
-        with open('data_'+subject+' '+i+'.csv', "r", encoding='utf-8') as file:
-            reader = csv.DictReader(file)
-            final.append(list(reader))   
+        conn = sqlite3.connect('data_'+subject+' '+i+'.db')  
+        c = conn.cursor()
+        c.execute('SELECT * FROM data')
+        final.append(c.fetchall())
     return final
             
             
