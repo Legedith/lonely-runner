@@ -1,51 +1,58 @@
 {% extends "layout.html" %}
 
 {% block body %}
-    <h1>Text Material</h1>
-    <ul>
-    <h3>Title &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Views</h3>
-        {% for i in texts %}
-            <a href="display?id={{i[2]}}&type=texts&subject={{subject}}">       
-                <li>{{ i[5][:30]}}...   &nbsp;&nbsp;&nbsp;&nbsp; : &nbsp;&nbsp;&nbsp;&nbsp;   {{i[1]}}</li>
-            </a>
-        {% endfor %}
-    </ul>
-    <h1>Websites</h1>
-    <ul>
-    <h3>Title &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Views</h3>
-        {% for i in web %}
-            <a href="display?id={{i[2]}}&type=web&subject={{subject}}">       
-                <li>{{ i[5][:30]}}...   &nbsp;&nbsp;&nbsp;&nbsp; : &nbsp;&nbsp;&nbsp;&nbsp;   {{i[1]}} </li>
-            </a>
-        {% endfor %}
-    </ul>
-    <h1>Videos</h1>
-    <ul>
-    <h3>Title &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Views</h3>
-        {% for i in movies %}
-            <a href="display?id={{i[2]}}&type=movies&subject={{subject}}">       
-                <li>{{ i[5][:30]}}...   &nbsp;&nbsp;&nbsp;&nbsp; : &nbsp;&nbsp;&nbsp;&nbsp;   {{i[1]}} </li>
-            </a>
-        {% endfor %}
-    </ul>
-    <h1>Images</h1>
-    <ul>
-    <h3>Title &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Views</h3>
-        {% for i in image %}
-            <a href="display?id={{i[2]}}&type=image&subject={{subject}}">       
-                <li>{{ i[5][:30]}}...   &nbsp;&nbsp;&nbsp;&nbsp; : &nbsp;&nbsp;&nbsp;&nbsp;   {{i[1]}} </li>
-            </a>
-        {% endfor %}
-    </ul>
-    <h4>Audio</h4>
-    <ul>
-    <h3>Title &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Views</h3>
-        {% for i in audio %}
-            <a href="display?id={{i[2]}}&type=audio&subject={{subject}}">       
-                <li>{{ i[5][:30]}}...   &nbsp;&nbsp;&nbsp;&nbsp; : &nbsp;&nbsp;&nbsp;&nbsp;   {{i[1]}} </li>
-            </a>
-        {% endfor %}
-    </ul>
+    <div class="container">
+        <div class="row">
+            <h1>Text Material</h1>
+            <ul>
+            <h3>Title &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Views</h3>
+                {% for i in texts %}
+                    <a href="display?id={{i[2]}}&type=texts&subject={{subject}}">       
+                        <li>{{ i[5][:30]}}...   &nbsp;&nbsp;&nbsp;&nbsp; : &nbsp;&nbsp;&nbsp;&nbsp;   {{i[1]}}</li>
+                    </a>
+                {% endfor %}
+            </ul>
+            <h1>Websites</h1>
+            <ul>
+            <h3>Title &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Views</h3>
+                {% for i in web %}
+                    <a href="display?id={{i[2]}}&type=web&subject={{subject}}">       
+                        <li>{{ i[5][:30]}}...   &nbsp;&nbsp;&nbsp;&nbsp; : &nbsp;&nbsp;&nbsp;&nbsp;   {{i[1]}} </li>
+                    </a>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="row">
+            <h1>Videos</h1>
+            <ul>
+            <h3>Title &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Views</h3>
+                {% for i in movies %}
+                    <a href="display?id={{i[2]}}&type=movies&subject={{subject}}">       
+                        <li>{{ i[5][:30]}}...   &nbsp;&nbsp;&nbsp;&nbsp; : &nbsp;&nbsp;&nbsp;&nbsp;   {{i[1]}} </li>
+                    </a>
+                {% endfor %}
+            </ul>
+            <h1>Images</h1>
+            <ul>
+            <h3>Title &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Views</h3>
+                {% for i in image %}
+                    <a href="display?id={{i[2]}}&type=image&subject={{subject}}">       
+                        <li>{{ i[5][:30]}}...   &nbsp;&nbsp;&nbsp;&nbsp; : &nbsp;&nbsp;&nbsp;&nbsp;   {{i[1]}} </li>
+                    </a>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="row">
+            <h4>Audio</h4>
+            <ul>
+            <h3>Title &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Views</h3>
+                {% for i in audio %}
+                    <a href="display?id={{i[2]}}&type=audio&subject={{subject}}">       
+                        <li>{{ i[5][:30]}}...   &nbsp;&nbsp;&nbsp;&nbsp; : &nbsp;&nbsp;&nbsp;&nbsp;   {{i[1]}} </li>
+                    </a>
+                {% endfor %}
+            </ul>
+        </div>
     
     
 {% endblock %}
