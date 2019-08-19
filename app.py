@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request
 import csv
+import random
 from multiprocessing import Pool
 from os import path
 import material
@@ -9,7 +10,7 @@ app = Flask(__name__)
 import sqlite3
 import pandas as pd
 from pandas import DataFrame
-
+n  = random.randint(1,10)
 #subject = ''
 
 @app.route("/")
@@ -28,7 +29,7 @@ def result():
         subject+= ' ' + domain
     final = Textual(subject)
 #    mit = course_mit(subject)
-    return render_template("result.html", texts=final[0],web=final[1],movies=final[2],image=final[3],audio = final[4],subject=subject)#, medium=medium)
+    return render_template("result.html", texts=final[0][:n],web=final[1][:n],movies=final[2][:n],image=final[3][:n],audio = final[4][:n],subject=subject)#, medium=medium)
 
 #def removeSpaces(s):
 #    s.replace(" ","+")
