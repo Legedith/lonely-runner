@@ -1,0 +1,9 @@
+{% extends "layout.html" %}
+
+{% block body %}
+    <h4>Title: {{ info[5] }}</h4>
+    <h4>Views: {{info[1]}}</h4>
+    <h4>Description: {{ info[0] }}</h4>
+    <h4>Date: {{info[4]}}</h4>
+    <h4>Link: <a href='https://archive.org/details/{{info[2]}}'>Go to Archive</a></h4>
+{% endblock %}

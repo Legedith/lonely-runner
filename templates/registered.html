@@ -1,0 +1,10 @@
+{% extends "layout.html" %}
+
+{% block body %}
+    <h1>Registered</h1>
+    <ul>
+        {% for a,b in zip({{Name}},{{Links}}) %}
+            <li href="{{b}}">{{ a }}</li>
+        {% endfor %}
+    </ul>
+{% endblock %}
