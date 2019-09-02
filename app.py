@@ -10,7 +10,7 @@ app = Flask(__name__)
 import sqlite3
 import pandas as pd
 from pandas import DataFrame
-n  = random.randint(1,10)
+n  = random.randint(4,6)
 #subject = ''
 
 @app.route("/")
