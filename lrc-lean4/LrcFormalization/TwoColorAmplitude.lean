@@ -89,9 +89,13 @@ theorem twoColor_mean (c : Bool) :
 theorem twoColor_pair_zero {c d : Bool} (hcd : c ≠ d) :
     twoColorExpectationLinear
       (fun o => twoColorValue c o * twoColorValue d o) = 0 := by
-  cases c <;> cases d <;>
-    norm_num [twoColorExpectationLinear, twoColorExpectation,
-      twoColorWeight, twoColorValue] at hcd ⊢
+  cases c <;> cases d
+  · exact (hcd rfl).elim
+  · norm_num [twoColorExpectationLinear, twoColorExpectation,
+      twoColorWeight, twoColorValue]
+  · norm_num [twoColorExpectationLinear, twoColorExpectation,
+      twoColorWeight, twoColorValue]
+  · exact (hcd rfl).elim
 
 /-- The concrete law as a `PairCancellingFamily`. -/
 def twoColorPairCancellingFamily :
