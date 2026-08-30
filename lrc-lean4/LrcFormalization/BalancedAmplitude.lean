@@ -20,11 +20,14 @@ def amplitude (s h : ℝ) : ℝ := (1 + s * h) / (1 + s)
 
 @[simp] theorem amplitude_one (s : ℝ) (hs : s ≠ -1) :
     amplitude s 1 = 1 := by
-  have hden : 1 + s ≠ 0 := by linarith
+  have hden : 1 + s ≠ 0 := by
+    intro hzero
+    apply hs
+    linarith
   unfold amplitude
   field_simp [hden]
 
- theorem amplitude_neg_one (s : ℝ) :
+theorem amplitude_neg_one (s : ℝ) :
     amplitude s (-1) = (1 - s) / (1 + s) := by
   unfold amplitude
   ring
@@ -87,6 +90,7 @@ theorem expectation_pair_cancellation
   rw [show E C = -(1 / s ^ 2) by simpa [C] using hE₁₂]
   have hs0 : s ≠ 0 := ne_of_gt hs
   field_simp [hs0, hden]
+  ring
 
 /--
 The elementary square-root obstruction behind pair-cancelling families.
@@ -99,18 +103,20 @@ theorem square_root_barrier_scalar
   have hsqrt : 0 < Real.sqrt q := Real.sqrt_pos.2 hq
   have hqeq : (Real.sqrt q) ^ 2 = q := by
     simpa using Real.sq_sqrt (le_of_lt hq)
+  have hq0 : q ≠ 0 := ne_of_gt hq
   have hqa : q * α ^ 2 ≤ 1 := by
-    apply (mul_le_mul_left hq).mp
     calc
-      q * (q * α ^ 2) = q ^ 2 * α ^ 2 := by ring
-      _ ≤ q := henergy
-      _ = q * 1 := by ring
+      q * α ^ 2 = (q ^ 2 * α ^ 2) / q := by
+        field_simp [hq0]
+        ring
+      _ ≤ q / q := div_le_div_of_nonneg_right henergy (le_of_lt hq)
+      _ = 1 := div_self hq0
   have hαsq : α ^ 2 ≤ 1 / q := by
     apply (le_div_iff₀ hq).2
     simpa [mul_comm] using hqa
   have hB : 0 ≤ 1 / Real.sqrt q := le_of_lt (one_div_pos.mpr hsqrt)
   have hBsq : (1 / Real.sqrt q) ^ 2 = 1 / q := by
-    field_simp [ne_of_gt hsqrt, ne_of_gt hq]
+    field_simp [ne_of_gt hsqrt, hq0]
     nlinarith [hqeq]
   apply abs_le_of_sq_le_sq _ hB
   rw [hBsq]
