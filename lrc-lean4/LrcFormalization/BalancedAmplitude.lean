@@ -108,7 +108,6 @@ theorem square_root_barrier_scalar
     calc
       q * α ^ 2 = (q ^ 2 * α ^ 2) / q := by
         field_simp [hq0]
-        ring
       _ ≤ q / q := div_le_div_of_nonneg_right henergy (le_of_lt hq)
       _ = 1 := div_self hq0
   have hαsq : α ^ 2 ≤ 1 / q := by
