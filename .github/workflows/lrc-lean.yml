@@ -1,0 +1,28 @@
+name: LRC Lean formalization
+
+on:
+  push:
+    branches: ["lrc-lean4-formalization-20260830"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: leanprover/lean-action@v1
+        env:
+          LEAN_NUM_THREADS: "1"
+        with:
+          lake-package-directory: lrc-lean4
+          auto-config: false
+          build: true
+          test: false
+          lint: false
+          leanchecker: true
+          axiom-audit: true
+          axiom-audit-root: LrcFormalization
+          use-github-cache: false
