@@ -90,8 +90,8 @@ theorem twoColor_pair_zero {c d : Bool} (hcd : c ≠ d) :
     twoColorExpectationLinear
       (fun o => twoColorValue c o * twoColorValue d o) = 0 := by
   cases c <;> cases d <;>
-    simp_all [twoColorExpectationLinear, twoColorExpectation,
-      twoColorWeight, twoColorValue]
+    norm_num [twoColorExpectationLinear, twoColorExpectation,
+      twoColorWeight, twoColorValue] at hcd ⊢
 
 /-- The concrete law as a `PairCancellingFamily`. -/
 def twoColorPairCancellingFamily :
@@ -102,7 +102,9 @@ def twoColorPairCancellingFamily :
   bound := twoColor_value_bound
   mean := 1 / 2
   commonMean := twoColor_mean
-  pairZero := twoColor_pair_zero
+  pairZero := by
+    intro c d hcd
+    exact twoColor_pair_zero hcd
 
 /-- Odd powers of a sign equal the sign. -/
 theorem sign_pow_eq_self_of_odd
