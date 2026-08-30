@@ -20,11 +20,13 @@ def amplitude (s h : ℝ) : ℝ := (1 + s * h) / (1 + s)
 
 @[simp] theorem amplitude_one (s : ℝ) (hs : s ≠ -1) :
     amplitude s 1 = 1 := by
-  simp [amplitude, hs]
+  have hden : 1 + s ≠ 0 := by linarith
+  unfold amplitude
+  field_simp [hden]
 
-theorem amplitude_neg_one (s : ℝ) :
+ theorem amplitude_neg_one (s : ℝ) :
     amplitude s (-1) = (1 - s) / (1 + s) := by
-  simp [amplitude]
+  unfold amplitude
   ring
 
 /-- If the input is a sign and `s ≥ 0`, the affine amplitude stays in `[-1,1]`. -/
@@ -39,16 +41,15 @@ theorem abs_amplitude_le_one {s h : ℝ} (hs : 0 ≤ s)
     have hden : 0 < 1 + s := by linarith
     rw [abs_le]
     constructor
-    · apply (div_le_iff₀ hden).2
-      linarith
-    · apply (le_div_iff₀ hden).2
-      linarith
+    · exact (le_div_iff₀ hden).2 (by linarith)
+    · exact (div_le_iff₀ hden).2 (by linarith)
 
 /-- Pointwise expansion of a product of two amplitudes. -/
 theorem amplitude_mul {s h₁ h₂ : ℝ} (hden : 1 + s ≠ 0) :
     amplitude s h₁ * amplitude s h₂ =
       (1 + s * h₁ + s * h₂ + s ^ 2 * (h₁ * h₂)) / (1 + s) ^ 2 := by
-  field_simp [amplitude, hden]
+  unfold amplitude
+  field_simp [hden]
   ring
 
 /--
@@ -98,22 +99,22 @@ theorem square_root_barrier_scalar
   have hsqrt : 0 < Real.sqrt q := Real.sqrt_pos.2 hq
   have hqeq : (Real.sqrt q) ^ 2 = q := by
     simpa using Real.sq_sqrt (le_of_lt hq)
-  have hαsq : α ^ 2 ≤ 1 / q := by
-    have hq2 : 0 < q ^ 2 := sq_pos_of_pos hq
-    apply (le_div_iff₀ hq2).2
+  have hqa : q * α ^ 2 ≤ 1 := by
+    apply (mul_le_mul_left hq).mp
     calc
-      α ^ 2 * q ^ 2 = q ^ 2 * α ^ 2 := by ring
+      q * (q * α ^ 2) = q ^ 2 * α ^ 2 := by ring
       _ ≤ q := henergy
-  rw [abs_le]
-  constructor
-  · have hsquare : (-1 / Real.sqrt q) ^ 2 = 1 / q := by
-      field_simp [ne_of_gt hsqrt, ne_of_gt hq]
-      nlinarith [hqeq]
-    nlinarith [sq_nonneg (α + 1 / Real.sqrt q), hαsq]
-  · have hsquare : (1 / Real.sqrt q) ^ 2 = 1 / q := by
-      field_simp [ne_of_gt hsqrt, ne_of_gt hq]
-      nlinarith [hqeq]
-    nlinarith [sq_nonneg (α - 1 / Real.sqrt q), hαsq]
+      _ = q * 1 := by ring
+  have hαsq : α ^ 2 ≤ 1 / q := by
+    apply (le_div_iff₀ hq).2
+    simpa [mul_comm] using hqa
+  have hB : 0 ≤ 1 / Real.sqrt q := le_of_lt (one_div_pos.mpr hsqrt)
+  have hBsq : (1 / Real.sqrt q) ^ 2 = 1 / q := by
+    field_simp [ne_of_gt hsqrt, ne_of_gt hq]
+    nlinarith [hqeq]
+  apply abs_le_of_sq_le_sq _ hB
+  rw [hBsq]
+  exact hαsq
 
 end
 
