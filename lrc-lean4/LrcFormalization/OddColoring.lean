@@ -64,30 +64,8 @@ theorem oddOnPair_iff_ne
     [DecidableEq V]
     (color : V → Bool) {u v : V} (huv : u ≠ v) :
     OddOnSupport color {u, v} ↔ color u ≠ color v := by
-  constructor
-  · intro hodd hsame
-    rcases hodd with ⟨c, hc⟩
-    have hcard : colorMultiplicity color {u, v} c = 0 ∨
-        colorMultiplicity color {u, v} c = 2 := by
-      unfold colorMultiplicity
-      by_cases huc : color u = c
-      · have hvc : color v = c := by simpa [hsame] using huc
-        right
-        simp [huc, hvc, huv]
-      · have hvc : color v ≠ c := by simpa [hsame] using huc
-        left
-        simp [huc, hvc]
-    rcases hcard with hzero | htwo
-    · rw [hzero] at hc
-      exact (by simpa using hc : False)
-    · rw [htwo] at hc
-      exact (by simpa using hc : False)
-  · intro hne
-    refine ⟨color u, ?_⟩
-    have hvcolor : color v ≠ color u := by
-      intro h
-      exact hne h.symm
-    simp [colorMultiplicity, huv, hvcolor]
+  cases hcu : color u <;> cases hcv : color v <;>
+    simp [OddOnSupport, colorMultiplicity, hcu, hcv, huv]
 
 end
 
