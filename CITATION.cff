@@ -5,18 +5,22 @@ type: software
 authors:
   - family-names: "Dehmiwal"
     given-names: "Jatin"
-repository-code: "https://github.com/Legedith/Project-2"
-url: "https://legedith.github.io/Project-2/"
-version: "0.1.0"
+repository-code: "https://github.com/Legedith/lonely-runner"
+url: "https://legedith.github.io/lonely-runner/"
+version: "0.2.0"
 date-released: "2026-08-31"
 keywords:
   - "Lonely Runner Conjecture"
   - "Riesz products"
   - "odd coloring"
   - "hypergraph coloring"
+  - "correlated amplitudes"
   - "Lean 4"
   - "formal verification"
 abstract: >-
-  A machine-checked finite cancellation mechanism for Riesz-product approaches
-  to the Lonely Runner Conjecture, based on odd colorings, an explicit
-  correlated two-color amplitude law, and sharp scalar odd-moment filters.
+  A machine-checked finite cancellation interface for Riesz-product approaches
+  to the Lonely Runner Conjecture. On every even relation support, an explicit
+  positive-mean correlated two-color law has zero mixed moment if and only if
+  the support is odd-colored. Independent sharp scalar filters handle odd
+  support sizes, and failure of odd two-colorability yields a parity-circuit
+  obstruction over F_2.

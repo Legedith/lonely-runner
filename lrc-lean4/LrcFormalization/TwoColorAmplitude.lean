@@ -120,6 +120,14 @@ theorem sign_pow_eq_self_of_odd
     rw [hk]
     simp [pow_add, pow_mul]
 
+/-- Even powers of a sign equal one. -/
+theorem sign_pow_eq_one_of_even
+    {x : ℝ} (hx : x = 1 ∨ x = -1) {n : ℕ} (hn : Even n) :
+    x ^ n = 1 := by
+  rcases hx with rfl | rfl
+  · simp
+  · exact hn.neg_one_pow
+
 /-- If both color multiplicities are odd, the corresponding mixed moment vanishes. -/
 theorem twoColor_odd_odd_moment_zero
     {m n : ℕ} (hm : Odd m) (hn : Odd n) :
@@ -133,6 +141,22 @@ theorem twoColor_odd_odd_moment_zero
     exact sign_pow_eq_self_of_odd (twoColor_value_sign true o) hn
   simp_rw [hm', hn']
   exact twoColor_pair_zero (by decide)
+
+/-- If both color multiplicities are even, the corresponding mixed moment is one. -/
+theorem twoColor_even_even_moment_one
+    {m n : ℕ} (hm : Even m) (hn : Even n) :
+    twoColorExpectationLinear
+      (fun o => twoColorValue false o ^ m * twoColorValue true o ^ n) = 1 := by
+  have hfun :
+      (fun o => twoColorValue false o ^ m * twoColorValue true o ^ n) =
+        (1 : TwoColorOutcome → ℝ) := by
+    funext o
+    have hm' := sign_pow_eq_one_of_even (twoColor_value_sign false o) hm
+    have hn' := sign_pow_eq_one_of_even (twoColor_value_sign true o) hn
+    rw [hm', hn']
+    norm_num
+  rw [hfun]
+  exact twoColor_expectation_one
 
 /-- The weighted first-level gain is exactly half of the total class mass. -/
 theorem twoColor_weighted_gain (a₀ a₁ : ℝ) :
