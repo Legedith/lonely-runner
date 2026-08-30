@@ -16,23 +16,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Bootstrap Lean toolchain
-        continue-on-error: true
-        uses: leanprover/lean-action@v1
-        with:
-          lake-package-directory: lrc-lean4
-          auto-config: false
-          build: false
-          test: false
-          lint: false
-          use-github-cache: false
-
-      - name: Resolve pinned Lake dependencies
-        working-directory: lrc-lean4
-        run: |
-          export PATH="$HOME/.elan/bin:$PATH"
-          lake update
-
       - name: Build and independently check
         uses: leanprover/lean-action@v1
         env:
@@ -46,4 +29,4 @@ jobs:
           leanchecker: true
           axiom-audit: true
           axiom-audit-root: LrcFormalization
-          use-github-cache: false
+          use-github-cache: true
