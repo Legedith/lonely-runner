@@ -3,6 +3,8 @@ name: LRC Lean formalization
 on:
   push:
     branches: ["lrc-lean4-formalization-20260830"]
+  pull_request:
+    branches: ["master"]
   workflow_dispatch:
 
 permissions:
