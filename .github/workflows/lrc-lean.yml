@@ -29,4 +29,4 @@ jobs:
           leanchecker: true
           axiom-audit: true
           axiom-audit-root: LrcFormalization
-          use-github-cache: true
+          use-github-cache: false
