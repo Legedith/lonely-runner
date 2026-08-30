@@ -1,0 +1,22 @@
+cff-version: 1.2.0
+message: "Please cite this research note and its Lean formalization using the metadata below."
+title: "Odd-Color Amplitude Filters for Lonely Runner Riesz Products"
+type: software
+authors:
+  - family-names: "Dehmiwal"
+    given-names: "Jatin"
+repository-code: "https://github.com/Legedith/Project-2"
+url: "https://legedith.github.io/Project-2/"
+version: "0.1.0"
+date-released: "2026-08-31"
+keywords:
+  - "Lonely Runner Conjecture"
+  - "Riesz products"
+  - "odd coloring"
+  - "hypergraph coloring"
+  - "Lean 4"
+  - "formal verification"
+abstract: >-
+  A machine-checked finite cancellation mechanism for Riesz-product approaches
+  to the Lonely Runner Conjecture, based on odd colorings, an explicit
+  correlated two-color amplitude law, and sharp scalar odd-moment filters.
