@@ -185,7 +185,7 @@ theorem mean_le_one_third_of_third_moment_zero
     exact mul_nonneg (by linarith [hlower ω]) (sq_nonneg _)
   have hnonneg := hEpos Q hQ
   have hfun : Q =
-      (1 : Ω → ℝ) + 4 • (fun ω => X ω ^ 3) + (-3 : ℝ) • X := by
+      (1 : Ω → ℝ) + (4 : ℝ) • (fun ω => X ω ^ 3) + (-3 : ℝ) • X := by
     funext ω
     simp [Q]
     ring
@@ -216,7 +216,7 @@ theorem mean_le_one_fifth_of_odd_moments_zero
     exact mul_nonneg (sub_nonneg.mpr (hupper ω)) (sq_nonneg _)
   have hnonneg := hEpos Q hQ
   have hfun : Q =
-      (1 : Ω → ℝ) + 20 • (fun ω => X ω ^ 3) +
+      (1 : Ω → ℝ) + (20 : ℝ) • (fun ω => X ω ^ 3) +
         (-16 : ℝ) • (fun ω => X ω ^ 5) + (-5 : ℝ) • X := by
     funext ω
     simp [Q]
