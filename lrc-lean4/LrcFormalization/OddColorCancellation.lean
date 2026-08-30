@@ -38,12 +38,9 @@ theorem bool_colorMultiplicity_sum
     {V : Type*} [DecidableEq V]
     (color : V → Bool) (S : Finset V) :
     colorMultiplicity color S false + colorMultiplicity color S true = S.card := by
-  induction S using Finset.induction_on with
-  | empty => simp [colorMultiplicity]
-  | @insert a S ha ih =>
-      cases hca : color a <;>
-        simp [colorMultiplicity, ha, hca, ih, Nat.add_assoc, Nat.add_comm,
-          Nat.add_left_comm]
+  simpa [colorMultiplicity] using
+    (Finset.sum_filter_add_sum_filter_not S
+      (fun v => color v = false) (fun _ : V => (1 : ℕ)))
 
 /--
 An odd two-coloring of an even finite support annihilates its exact color-count
