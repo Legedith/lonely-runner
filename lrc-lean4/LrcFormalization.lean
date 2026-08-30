@@ -3,3 +3,5 @@ import LrcFormalization.SupportColoring
 import LrcFormalization.RieszFactor
 import LrcFormalization.OddMomentFilter
 import LrcFormalization.ParityFilter
+import LrcFormalization.OddColoring
+import LrcFormalization.TwoColorAmplitude
