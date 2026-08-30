@@ -59,14 +59,6 @@ theorem oddForSupports_of_injective
   intro S hS
   exact oddOnSupport_of_injOn color S (hne S hS) (hinj S hS)
 
-/-- For a two-element support, odd coloring is exactly separation of its two vertices. -/
-theorem oddOnPair_iff_ne
-    [DecidableEq V]
-    (color : V → Bool) {u v : V} (huv : u ≠ v) :
-    OddOnSupport color {u, v} ↔ color u ≠ color v := by
-  cases hcu : color u <;> cases hcv : color v <;>
-    simp [OddOnSupport, colorMultiplicity, hcu, hcv, huv]
-
 end
 
 end LonelyRunner.CorrelatedAmplitude
